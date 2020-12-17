@@ -4,7 +4,6 @@ namespace Jncinet\LaravelEnvEditor;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use Jncnet\LaravelEnvEditor\EnvEditor;
 
 class EnvEditorServiceProvider extends ServiceProvider implements DeferrableProvider
 {

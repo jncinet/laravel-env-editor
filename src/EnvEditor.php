@@ -1,16 +1,15 @@
 <?php
 
-namespace Jncnet\LaravelEnvEditor;
+namespace Jncinet\LaravelEnvEditor;
 
 class EnvEditor
 {
     protected $env;
 
-    public function __construct($path = null)
+    public function __construct(array $config = [])
     {
-        if (empty($path)) {
-            $path = base_path('.env');
-        }
+        $path = $config['path'] ?? base_path('.env');
+
         $this->env = file_get_contents($path);
     }
 
