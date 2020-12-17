@@ -1,0 +1,29 @@
+{
+  "name": "jncinet/laravel-env-editor",
+  "description": "laravel env editor.",
+  "keywords": [
+    "laravel",
+    "env",
+    "editor"
+  ],
+  "homepage": "https://www.zhangye.org.cn",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhangye",
+      "email": "y@qilephp.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jncinet\\LaravelEnvEditor\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Jncinet\\LaravelEnvEditor\\EnvEditorServiceProvider"
+      ]
+    }
+  }
+}
