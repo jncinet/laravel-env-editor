@@ -6,9 +6,9 @@ class EnvEditor
 {
     protected $env;
 
-    public function __construct(array $config = [])
+    public function __construct($path)
     {
-        $path = $config['path'] ?? base_path('.env');
+        $path = $path ?: base_path('.env');
 
         $this->env = file_get_contents($path);
     }

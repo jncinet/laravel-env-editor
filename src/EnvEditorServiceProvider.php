@@ -14,8 +14,8 @@ class EnvEditorServiceProvider extends ServiceProvider implements DeferrableProv
 
     public function register()
     {
-        $this->app->singleton(EnvEditor::class, function ($app) {
-            return new EnvEditor($app);
+        $this->app->singleton(EnvEditor::class, function ($app, $path = null) {
+            return new EnvEditor($path);
         });
 
         $this->app->alias(EnvEditor::class, 'env-editor');
