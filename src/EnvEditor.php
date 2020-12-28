@@ -2,6 +2,8 @@
 
 namespace Jncinet\LaravelEnvEditor;
 
+use Qihucms\Support\Str;
+
 class EnvEditor
 {
     protected $env;
@@ -31,6 +33,16 @@ class EnvEditor
             $entry = explode("=", $one, 2);
             if (!empty($entry[0])) {
                 $array[$entry[0]] = isset($entry[1]) ? $entry[1] : null;
+                // 不转引号内的中文字符、key='APP_KEY'
+                if (
+                    $entry[0] != 'APP_KEY'
+                    && !empty($array[$entry[0]])
+                    && strpos($array[$entry[0]], '"') != 0
+                    && strpos($array[$entry[0]], '"', -0) != 0
+                    && Str::isEncoding($array[$entry[0]])
+                ) {
+                    $array[$entry[0]] = Str::decode($array[$entry[0]]);
+                }
             }
         }
         if (empty($key)) {
@@ -71,6 +83,9 @@ class EnvEditor
             foreach ($array as $key => $env) {
                 if (preg_match('/\s/', $env) > 0 && (strpos($env, '"') > 0 && strpos($env, '"', -0) > 0)) {
                     $env = '"' . $env . '"';
+                } elseif (Str::includingChinese($env)) {
+                    // 对中文进行base64编码
+                    $env = Str::encode($env);
                 }
                 $newArray[$i] = $key . '=' . $env;
                 $i++;
