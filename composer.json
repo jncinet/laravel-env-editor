@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "jncinet/support": "^1.0"
+    "jncinet/qihucms-support": "^1.0"
   },
   "autoload": {
     "psr-4": {
